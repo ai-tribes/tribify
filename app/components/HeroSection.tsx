@@ -32,7 +32,7 @@ export const HeroSection = () => {
             </Button>
             <Button 
               as={Link} 
-              href="/about" 
+              href="/web3strategy" 
               className="bg-transparent dark:hover:bg-dark-lighter hover:bg-gray-100 
                 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 px-8 py-3"
             >
