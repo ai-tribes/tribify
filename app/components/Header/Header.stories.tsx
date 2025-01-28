@@ -1,15 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Header } from './Header'
 import { ThemeProvider } from '../ThemeProvider'
+import { StyleProvider } from '../../contexts/StyleProvider'
 
 const meta = {
   title: 'Components/Header',
   component: Header,
   decorators: [
     (Story) => (
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <Story />
-      </ThemeProvider>
+      <StyleProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Story />
+        </ThemeProvider>
+      </StyleProvider>
     ),
   ],
   parameters: {

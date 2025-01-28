@@ -1,15 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Footer } from './Footer'
 import { ThemeProvider } from '../ThemeProvider'
+import { StyleProvider } from '../../contexts/StyleProvider'
 
 const meta = {
   title: 'Components/Footer',
   component: Footer,
   decorators: [
     (Story) => (
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <Story />
-      </ThemeProvider>
+      <StyleProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Story />
+        </ThemeProvider>
+      </StyleProvider>
     ),
   ],
   parameters: {
