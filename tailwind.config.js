@@ -7,21 +7,51 @@ module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/flowbite-react/lib/**/*.js",
   ],
   theme: {
     extend: {
       colors: {
         primary: {
-          50: "#eff6ff",
-          100: "#dbeafe",
-          200: "#bfdbfe",
-          300: "#93c5fd",
-          400: "#60a5fa",
-          500: "#3b82f6",
-          600: "#2563eb",
-          700: "#1d4ed8",
-          800: "#1e40af",
-          900: "#1e3a8a",
+          DEFAULT: '#8C7355',  // Warm brown
+          dark: '#6B563F',     // Darker brown
+          light: '#A69076',    // Light brown
+        },
+        brand: {
+          title: '#4A4238',    // Deep warm grey
+          accent: '#D4C5B1',   // Light cream
+          cream: '#F5F1EA',    // Background cream
+          stone: '#9B8E83',    // Warm grey
+          sand: '#E6DFD4',     // Light sand
+        },
+        neutral: {
+          50: '#F5F1EA',      // Lightest cream
+          100: '#E6DFD4',     // Light cream
+          200: '#D4C5B1',     // Medium cream
+          300: '#B8A99A',     // Dark cream
+          400: '#9B8E83',     // Light grey
+          500: '#8C7355',     // Medium grey
+          600: '#6B563F',     // Dark grey
+          700: '#4A4238',     // Darker grey
+          800: '#332E27',     // Almost black
+          900: '#1F1C17',     // Black
+        },
+        gray: {
+          50: '#F9FAFB',
+          100: '#F3F4F6',
+          200: '#E5E7EB',
+          300: '#D1D5DB',
+          400: '#9CA3AF',
+          500: '#6B7280',
+          600: '#4B5563',
+          700: '#374151',
+          800: '#1F2937',
+          900: '#111827',
+        },
+        dark: {
+          DEFAULT: '#0f1629',  // Deep navy
+          lighter: '#1a2236',  // Slightly lighter navy for hover states
+          darker: '#0a101f',   // Darker navy for active states
         },
       },
       fontFamily: {
@@ -75,9 +105,26 @@ module.exports = {
       minWidth: {
         ...defaultTheme.width,
       },
+      keyframes: {
+        gradient: {
+          '0%, 100%': {
+            'background-size': '200% 200%',
+            'background-position': 'left center'
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'right center'
+          },
+        },
+      },
+      animation: {
+        gradient: 'gradient 15s ease infinite',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
   future: {
     hoverOnlyWhenSupported: true,
   },

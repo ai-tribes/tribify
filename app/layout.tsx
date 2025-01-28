@@ -1,26 +1,22 @@
 import "styles/tailwind.css"
+import { Flowbite } from 'flowbite-react'
+import { ThemeProvider } from 'next-themes'
 import { Footer } from './components/Footer/Footer'
 import { Header } from './components/Header/Header'
-import { ThemeProvider } from './components/ThemeProvider'
-import { StyleProvider } from './contexts/StyleProvider'
-import { StyleToggle } from './components/StyleToggle'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
-        <StyleProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <body className="bg-white dark:bg-dark min-h-screen">
+        <ThemeProvider attribute="class" enableSystem>
+          <Flowbite>
             <Header />
-            <div className="fixed top-4 right-4 z-50">
-              <StyleToggle />
-            </div>
-            <main className="pt-16 min-h-screen">
+            <main className="pt-16">
               {children}
             </main>
             <Footer />
-          </ThemeProvider>
-        </StyleProvider>
+          </Flowbite>
+        </ThemeProvider>
       </body>
     </html>
   )

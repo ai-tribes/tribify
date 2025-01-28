@@ -1,47 +1,27 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Header } from './Header'
-import { ThemeProvider } from '../ThemeProvider'
-import { StyleProvider } from '../../contexts/StyleProvider'
 
 const meta = {
   title: 'Components/Header',
   component: Header,
-  decorators: [
-    (Story) => (
-      <StyleProvider>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Story />
-        </ThemeProvider>
-      </StyleProvider>
-    ),
-  ],
   parameters: {
     layout: 'fullscreen',
-    docs: {
-      disable: true,
-    },
   },
+  decorators: [
+    (Story) => (
+      <div className="dark bg-dark min-h-screen">
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof Header>
 
 export default meta
 type Story = StoryObj<typeof Header>
 
-export const Light: Story = {
-  parameters: {
-    backgrounds: {
-      default: 'light',
-    },
-  },
-}
+export const Default: Story = {}
 
-export const Dark: Story = {
-  parameters: {
-    backgrounds: {
-      default: 'dark',
-    },
-    theme: 'dark',
-  },
-}
+export const Dark: Story = {}
 
 export const Mobile: Story = {
   parameters: {
