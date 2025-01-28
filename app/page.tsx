@@ -4,7 +4,7 @@ import { Button } from "components/Button/Button"
 import { LP_GRID_ITEMS } from "lp-items"
 
 export const metadata: Metadata = {
-  title: "Next.js Enterprise Boilerplate",
+  title: "tribify.ai",
   twitter: {
     card: "summary_large_image",
   },
