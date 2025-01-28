@@ -1,10 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { Moon, Sun } from 'lucide-react'
-import Link from 'next/link'
 import { Switch } from '@radix-ui/react-switch'
 import { useTheme } from 'next-themes'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 export const Header = () => {
   const { theme, setTheme } = useTheme()
