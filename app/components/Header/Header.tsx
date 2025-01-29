@@ -1,9 +1,17 @@
 'use client'
 
-import { Button } from 'flowbite-react'
+import { Button, Dropdown } from 'flowbite-react'
 import Link from 'next/link'
-import { HiOutlineMenu } from 'react-icons/hi'
+import { HiChevronDown, HiOutlineMenu } from 'react-icons/hi'
+import { ConnectWallet } from '../ConnectWallet'
 import { DarkModeToggle } from '../DarkModeToggle'
+
+const mainNavItems = [
+  { name: 'About', id: 'about' },
+  { name: 'Vision', id: 'vision' },
+  { name: 'Features', id: 'features' },
+  { name: 'Strategy', id: 'strategy' },
+];
 
 export const Header = () => {
   const scrollTo = (id: string) => {
@@ -23,18 +31,32 @@ export const Header = () => {
           </Link>
           
           <nav className="hidden md:flex items-center space-x-6">
-            <button onClick={() => scrollTo('about')} className="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition">
-              About
-            </button>
-            <button onClick={() => scrollTo('vision')} className="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition">
-              Vision
-            </button>
-            <button onClick={() => scrollTo('features')} className="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition">
-              Features
-            </button>
-            <button onClick={() => scrollTo('strategy')} className="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition">
-              Strategy
-            </button>
+            <div className="relative">
+              <Dropdown
+                label={
+                  <div className="flex items-center text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition cursor-pointer">
+                    Menu
+                    <HiChevronDown className="ml-1 h-4 w-4" />
+                  </div>
+                }
+                inline
+                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700"
+              >
+                {mainNavItems.map((item) => (
+                  <Dropdown.Item
+                    key={item.id}
+                    onClick={() => scrollTo(item.id)}
+                    className="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white"
+                  >
+                    {item.name}
+                  </Dropdown.Item>
+                ))}
+              </Dropdown>
+            </div>
+
+            <Link href="/resources" className="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition">
+              Resources
+            </Link>
             <button onClick={() => scrollTo('contact')} className="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition">
               Contact
             </button>
@@ -46,22 +68,7 @@ export const Header = () => {
           <DarkModeToggle />
           
           <div className="hidden md:flex items-center space-x-2">
-            <Button 
-              as={Link} 
-              href="/login" 
-              className="bg-transparent dark:hover:bg-dark-lighter hover:bg-gray-100 
-                text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700"
-            >
-              Sign in
-            </Button>
-            <Button 
-              as={Link} 
-              href="/signup" 
-              className="bg-dark hover:bg-dark-lighter text-white dark:bg-white dark:text-dark 
-                dark:hover:bg-gray-100 font-medium"
-            >
-              Get Started
-            </Button>
+            <ConnectWallet />
           </div>
 
           {/* Mobile menu */}

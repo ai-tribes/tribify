@@ -1,16 +1,16 @@
 'use client'
 
-import { useRef } from 'react'
 import { Button } from 'flowbite-react'
-import { HeroSection } from './components/HeroSection'
+import { useRef } from 'react'
 import { 
   HiChip,
   HiCube, 
   HiCurrencyDollar,
   HiShieldCheck,
   HiSparkles,
-  HiUserGroup 
+  HiUserGroup
 } from 'react-icons/hi'
+import { HeroSection } from './components/HeroSection'
 
 const features = [
   {
@@ -185,11 +185,15 @@ export default function HomePage() {
   const featuresRef = useRef<HTMLElement>(null)
   const strategyRef = useRef<HTMLElement>(null)
   const contactRef = useRef<HTMLElement>(null)
-  const scrollTo = useRef<HTMLDivElement>(null)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     // Add form submission logic
+  }
+
+  const _scrollTo = (id: string) => {
+    const element = document.getElementById(id)
+    element?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
