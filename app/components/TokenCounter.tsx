@@ -5,6 +5,7 @@ import { Connection, PublicKey } from '@solana/web3.js';
 import { useEffect, useState } from 'react';
 
 const TRIBIFY_TOKEN_MINT = '672PLqkiNdmByS6N1BQT5YPbEpkZte284huLUCxupump';
+const OFFICIAL_PRICE = 0.01;
 
 export function TokenCounter() {
   const { publicKey } = useWallet();
@@ -20,7 +21,7 @@ export function TokenCounter() {
           mint: new PublicKey(TRIBIFY_TOKEN_MINT)
         });
         const balance = accounts.value[0]?.account.data.parsed.info.tokenAmount.uiAmount ?? 0;
-        setBalance(balance);
+        setBalance(Math.floor(balance));
       } catch (error) {
         console.error('Failed to fetch token balance:', error);
         setBalance(0);
@@ -32,25 +33,25 @@ export function TokenCounter() {
     return () => clearInterval(interval);
   }, [publicKey]);
 
+  const walletValue = balance === null ? '...' : `$${new Intl.NumberFormat().format(balance * OFFICIAL_PRICE)}`;
+
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
-      <div className="fixed top-6 left-6 backdrop-blur-sm">
-        <div className="bg-white/90 dark:bg-gray-900/90 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-800 p-4 transition-all duration-300 hover:scale-105">
-          <div className="flex items-center gap-3">
-            <div className="flex flex-col items-end">
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                <p className="text-2xl font-mono font-bold text-black dark:text-white tracking-tight">
-                  {balance === null ? '...' : balance.toLocaleString()}
-                </p>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <div className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-700" />
-                <p className="text-xs text-gray-500 dark:text-gray-400 font-mono uppercase tracking-wider">
-                  tribify
-                </p>
-              </div>
+    <div className="fixed top-6 left-6 backdrop-blur-sm">
+      <div className="bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-2">
+            <p className="text-2xl font-bold text-black dark:text-white">
+              {balance === null ? '...' : new Intl.NumberFormat().format(balance)}
+            </p>
+            <div className="flex items-center gap-2">
+              <div className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-700" />
+              <p className="text-xs text-gray-500 dark:text-gray-400 font-mono uppercase tracking-wider">
+                $TRIBIFY
+              </p>
             </div>
+          </div>
+          <div className="flex items-center gap-4 text-xs text-gray-500">
+            <span>Value: {walletValue}</span>
           </div>
         </div>
       </div>
