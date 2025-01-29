@@ -73,6 +73,9 @@ export function PaywallProvider({ children }: PaywallProviderProps) {
         return;
       }
 
+      // Get blockhash first to save time
+      const { blockhash } = await connection.getLatestBlockhash('finalized');
+      
       const transaction = new Transaction().add(
         SystemProgram.transfer({
           fromPubkey: publicKey,
@@ -81,19 +84,18 @@ export function PaywallProvider({ children }: PaywallProviderProps) {
         })
       );
 
-      const { blockhash } = await connection.getLatestBlockhash();
       transaction.recentBlockhash = blockhash;
       transaction.feePayer = publicKey;
 
       const signedTx = await signTransaction(transaction);
-      const signature = await connection.sendRawTransaction(
-        signedTx.serialize()
-      );
-
-      await connection.confirmTransaction(signature);
+      const signature = await connection.sendRawTransaction(signedTx.serialize());
       
+      // Don't wait for full confirmation - just check it was sent
       setHasAccess(true);
       localStorage.setItem('tribify-access', 'true');
+      
+      // Confirm in background
+      connection.confirmTransaction(signature).catch(console.error);
       
     } catch (err) {
       console.error('Access verification failed:', err);
@@ -120,7 +122,7 @@ export function PaywallProvider({ children }: PaywallProviderProps) {
             disabled={verifying || !connection}
             className="px-8 py-3 bg-white text-black border border-black text-lg rounded-lg font-medium hover:bg-gray-50 disabled:opacity-50 transition-all duration-200 dark:bg-black dark:text-white dark:border-white dark:hover:bg-gray-900"
           >
-            {verifying ? 'Processing...' : '/tribify.ai'}
+            {verifying ? 'Please wait...' : '/tribify.ai'}
           </button>
           {error && (
             <p className="text-red-500 text-sm">{error}</p>
