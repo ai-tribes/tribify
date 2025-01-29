@@ -32,7 +32,6 @@
     "@solana/wallet-adapter-react": "^0.15.35",
     "@solana/wallet-adapter-react-ui": "^0.9.35",
     "@solana/web3.js": "^1.98.0",
-    "@swc/core-darwin-x64": "^1.10.11",
     "@t3-oss/env-nextjs": "^0.10.1",
     "@vercel/otel": "^1.8.3",
     "class-variance-authority": "^0.7.1",
