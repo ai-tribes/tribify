@@ -20,8 +20,8 @@ export const DarkModeToggle = () => {
   return (
     <Button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="focus:ring-0 bg-transparent dark:hover:bg-dark-lighter hover:bg-gray-100 
-        text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 p-2 rounded-lg"
+      className="!p-2 h-9 w-9 flex items-center justify-center bg-transparent dark:hover:bg-dark-lighter hover:bg-gray-100 
+        text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700"
     >
       {theme === 'light' ? (
         <HiMoon className="h-5 w-5" />

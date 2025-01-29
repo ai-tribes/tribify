@@ -4,15 +4,15 @@ import { Button } from 'flowbite-react'
 import Link from 'next/link'
 import { HiArrowRight } from 'react-icons/hi'
 
-export const Footer = () => {
+export function Footer() {
   return (
-    <footer className="bg-white dark:bg-[#0f1629] border-t border-gray-200 dark:border-gray-800">
+    <footer className="py-12 bg-white/50 dark:bg-dark/50 backdrop-blur-sm">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           {/* Brand section */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2">
-              <span className="text-xl font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
+              <span className="text-xl font-bold text-gray-900 dark:text-white">
                 /tribify.ai
               </span>
             </Link>

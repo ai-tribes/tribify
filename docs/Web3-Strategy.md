@@ -6,7 +6,7 @@ tribify.ai aims to build AI-powered communities using Web3 technologies to ensur
 ## Core Components
 
 ### 1. Tokenomics
-- **Community Token ($TRIBE)**
+- **Community Token ($tribify.ai)**
   - Governance rights
   - Revenue sharing
   - Access to premium features

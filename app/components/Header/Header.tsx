@@ -6,36 +6,38 @@ import { HiOutlineMenu } from 'react-icons/hi'
 import { DarkModeToggle } from '../DarkModeToggle'
 
 export const Header = () => {
+  const scrollTo = (id: string) => {
+    const element = document.getElementById(id)
+    element?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <header className="fixed w-full z-50 border-b bg-white/80 backdrop-blur-md dark:bg-[#0f1629]/80 border-gray-200 dark:border-gray-800">
       <div className="flex items-center justify-between px-4 py-3 max-w-7xl mx-auto">
         {/* Left side - Logo & Nav */}
         <div className="flex items-center space-x-8">
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
+            <span className="text-xl font-bold text-gray-900 dark:text-white">
               /tribify.ai
             </span>
           </Link>
           
           <nav className="hidden md:flex items-center space-x-6">
-            <Link 
-              href="/features" 
-              className="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition"
-            >
-              Features
-            </Link>
-            <Link 
-              href="/about"
-              className="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition"
-            >
+            <button onClick={() => scrollTo('about')} className="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition">
               About
-            </Link>
-            <Link 
-              href="/contact"
-              className="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition"
-            >
+            </button>
+            <button onClick={() => scrollTo('vision')} className="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition">
+              Vision
+            </button>
+            <button onClick={() => scrollTo('features')} className="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition">
+              Features
+            </button>
+            <button onClick={() => scrollTo('strategy')} className="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition">
+              Strategy
+            </button>
+            <button onClick={() => scrollTo('contact')} className="text-sm font-medium text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-white transition">
               Contact
-            </Link>
+            </button>
           </nav>
         </div>
 

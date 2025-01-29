@@ -3,6 +3,12 @@ import { Flowbite } from 'flowbite-react'
 import { ThemeProvider } from 'next-themes'
 import { Footer } from './components/Footer/Footer'
 import { Header } from './components/Header/Header'
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "tribify.ai",
+  description: "Building the future of AI tribes",
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

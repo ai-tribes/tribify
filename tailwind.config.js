@@ -13,9 +13,8 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#8C7355',  // Warm brown
-          dark: '#6B563F',     // Darker brown
-          light: '#A69076',    // Light brown
+          DEFAULT: '#111111',  // Black
+          light: '#ffffff',    // White
         },
         brand: {
           title: '#4A4238',    // Deep warm grey
@@ -48,11 +47,8 @@ module.exports = {
           800: '#1F2937',
           900: '#111827',
         },
-        dark: {
-          DEFAULT: '#0f1629',  // Deep navy
-          lighter: '#1a2236',  // Slightly lighter navy for hover states
-          darker: '#0a101f',   // Darker navy for active states
-        },
+        'dark': '#111111',
+        'dark-lighter': '#1a1a1a',
       },
       fontFamily: {
         body: [

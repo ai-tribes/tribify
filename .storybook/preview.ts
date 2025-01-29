@@ -1,6 +1,6 @@
 import type { Preview } from "@storybook/react"
-
-import "../styles/tailwind.css"
+import '../app/globals.css'
+import { withThemeByClassName } from '@storybook/addon-themes'
 
 const preview: Preview = {
   parameters: {
@@ -8,10 +8,20 @@ const preview: Preview = {
     controls: {
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/,
+        date: /Date$/i,
       },
     },
   },
+  decorators: [
+    withThemeByClassName({
+      themes: {
+        light: 'light',
+        dark: 'dark',
+      },
+      defaultTheme: 'light',
+    }),
+  ],
 }
 
 export default preview
+

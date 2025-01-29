@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function Web3StrategyPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <h1 className="text-4xl font-bold mb-8 text-gray-900 dark:text-white">
         Web3 Strategy
       </h1>
@@ -29,7 +29,7 @@ export default function Web3StrategyPage() {
         <div className="mb-8">
           <h3 className="text-xl font-medium mb-3 text-gray-800 dark:text-gray-200">1. Tokenomics</h3>
           <div className="bg-white dark:bg-dark-lighter rounded-lg p-6 shadow-sm">
-            <h4 className="font-medium mb-2 text-gray-900 dark:text-white">Community Token ($TRIBE)</h4>
+            <h4 className="font-medium mb-2 text-gray-900 dark:text-white">Community Token ($tribify.ai)</h4>
             <ul className="list-disc pl-5 mb-4 text-gray-600 dark:text-gray-400">
               <li>Governance rights</li>
               <li>Revenue sharing</li>
