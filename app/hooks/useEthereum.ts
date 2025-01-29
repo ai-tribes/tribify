@@ -7,21 +7,14 @@ export function useEthereum() {
   const [ethereum, setEthereum] = useState<MetaMaskInpageProvider | null>(null);
 
   useEffect(() => {
-    // Wait for window.ethereum to be injected
-    const checkEthereum = () => {
+    // Delay ethereum check to avoid conflicts with extensions
+    const timeout = setTimeout(() => {
       if (window.ethereum) {
         setEthereum(window.ethereum);
       }
-    };
+    }, 100);
 
-    checkEthereum();
-    
-    // Handle case where ethereum is injected after page load
-    window.addEventListener('ethereum#initialized', checkEthereum);
-    
-    return () => {
-      window.removeEventListener('ethereum#initialized', checkEthereum);
-    };
+    return () => clearTimeout(timeout);
   }, []);
 
   return ethereum;
